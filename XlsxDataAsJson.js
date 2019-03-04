@@ -1,12 +1,14 @@
+const XLSX = require("xlsx");
+
 class XlsxDataAsJson {
     /**
      * use getData(sheet, headers) when need custom headers
      * @param sheet is Sheet
      * @param headers is an array with headers
      */
-    getData(sheet, headers) {
-        if(!sheet) { return [] };
-        if(!headers) headers = this.getHeaders(sheet);
+    getBody(sheet, headers) {
+        if (!sheet) { return [] };
+        if (!headers) headers = this.getHeaders(sheet);
         var result = [];
         var line = 2;
         var blankLine = false;
@@ -51,5 +53,20 @@ class XlsxDataAsJson {
         return result;
     }
 
+    getData(fileUrl) {
+        var wb = XLSX.readFile(fileUrl);
+        var result = [];
+        wb.SheetNames.forEach(name => {
+            var sheet = wb.Sheets[name];
+            this.getBody(sheet).forEach(row => {
+                result.push(row);
+            });
+        });
+        return result;
+    }
+
 }
-module.exports = XlsxDataAsJson;
+const jsonFactory = function(fileUrl) {
+    new XlsxDataAsJson().getData(fileUrl);
+}
+module.exports = JsonFactory;
