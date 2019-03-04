@@ -66,7 +66,7 @@ class XlsxDataAsJson {
     }
 
 }
-const jsonFactory = function(fileUrl) {
+const JsonFactory = function(fileUrl) {
     new XlsxDataAsJson().getData(fileUrl);
 }
 module.exports = JsonFactory;
