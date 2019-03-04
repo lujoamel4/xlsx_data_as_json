@@ -1,0 +1,17 @@
+{
+  "name": "xlsx_data_as_json",
+  "version": "1.0.0",
+  "description": "Simple parse from xlsx to JSON",
+  "main": "XlsxDataAsJson.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Lucas Amilivia <amilivialucas4@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "xlsx": "^0.14.1"
+  },
+  "devDependencies": {
+    "mocha": "^6.0.2"
+  }
+}
