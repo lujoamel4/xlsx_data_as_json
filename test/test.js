@@ -21,11 +21,11 @@ describe('XlsxDataAsJson', function () {
     });
   });
 
-  describe('getData', function () {
+  describe('getBody', function () {
     const mf = new XlsxDataAsJson();
     it("Should return [], when the sheet is null or undefined or empty", function () {
-      assert.equal(mf.getData(null).length == 0, true);
-      assert.equal(mf.getData(undefined).length == 0, true);
+      assert.equal(mf.getBody(null).length == 0, true);
+      assert.equal(mf.getBody(undefined).length == 0, true);
     });
 
     it("Should return data in the sheet, when the sheet contain data", function () {
@@ -33,7 +33,7 @@ describe('XlsxDataAsJson', function () {
       wb.SheetNames.forEach(name => {
         var sheet = wb.Sheets[name];
         var headers = ["name", "description", "price", "url"];;
-        var rows = mf.getData(sheet, headers);
+        var rows = mf.getBody(sheet, headers);
         assert.equal(rows.length > 0, true);
         rows.forEach((row, index) => {
           var expectedData = resultData1[index];
@@ -49,7 +49,7 @@ describe('XlsxDataAsJson', function () {
       var wb = XLSX.readFile(__dirname + "/menu1.xlsx");
       wb.SheetNames.forEach(name => {
         var sheet = wb.Sheets[name];
-        var rows = mf.getData(sheet);
+        var rows = mf.getBody(sheet);
         assert.equal(rows.length > 0, true);
         rows.forEach((row, index) => {
           var expectedData = resultData1[index];
@@ -65,7 +65,7 @@ describe('XlsxDataAsJson', function () {
       var wb = XLSX.readFile(__dirname + "/menu2.xlsx");
       wb.SheetNames.forEach(name => {
         var sheet = wb.Sheets[name];
-        var rows = mf.getData(sheet);
+        var rows = mf.getBody(sheet);
         assert.equal(rows.length > 0, true);
         rows.forEach((row, index) => {
           assert.equal(row["Nombre"], resultData2[index]["Nombre"]);
@@ -80,7 +80,7 @@ describe('XlsxDataAsJson', function () {
   describe('parseFile', function () {
     const jsonFactory = new XlsxDataAsJson();
     it("Should return data in sheets until blank line, when file has data", function () {
-      var rows = jsonFactory.parseFile(__dirname + "/menu1.xlsx");
+      var rows = jsonFactory.getData(__dirname + "/menu1.xlsx");
       var expectedData = resultData1;
       assert.equal(rows.length, expectedData.length);
       rows.forEach((row, index) => {
@@ -92,7 +92,7 @@ describe('XlsxDataAsJson', function () {
     });
     
     it("Should return data in sheets until blank line, when file has data", function () {
-      var rows = jsonFactory.parseFile(__dirname + "/menu2.xlsx");
+      var rows = jsonFactory.getData(__dirname + "/menu2.xlsx");
       var expectedData = resultData2;
       assert.equal(rows.length, expectedData.length);
       rows.forEach((row, index) => {
