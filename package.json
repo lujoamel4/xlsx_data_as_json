@@ -1,8 +1,8 @@
 {
   "name": "xlsx_data_as_json",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple parse from xlsx to JSON",
-  "main": "XlsxDataAsJson.js",
+  "main": "index.js",
   "scripts": {
     "test": "mocha"
   },

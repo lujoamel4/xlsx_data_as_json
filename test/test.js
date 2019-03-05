@@ -1,13 +1,14 @@
 var assert = require('assert');
 
-const XlsxDataAsJson = require('../XlsxDataAsJson');
-
+const JsonFactory = require('../JsonFactory');
+const XlsxDataAsJson = require('../index');
+console.log(XlsxDataAsJson);
 const XLSX = require("xlsx");
 var fs = require('fs');
 
-describe('XlsxDataAsJson', function () {
+describe('JsonFactory', function () {
   describe('getHeaders', function () {
-    const mf = new XlsxDataAsJson();
+    const mf = new JsonFactory();
     it("should return A1, B1, ..., XX1, until not null cell", function () {
       var wb = XLSX.readFile(__dirname + "/menu1.xlsx");
       wb.SheetNames.forEach(name => {
@@ -22,13 +23,13 @@ describe('XlsxDataAsJson', function () {
   });
 
   describe('getBody', function () {
-    const mf = new XlsxDataAsJson();
-    it("Should return [], when the sheet is null or undefined or empty", function () {
+    const mf = new JsonFactory();
+    it("Should return [], when the sheets is null or undefined or empty", function () {
       assert.equal(mf.getBody(null).length == 0, true);
       assert.equal(mf.getBody(undefined).length == 0, true);
     });
 
-    it("Should return data in the sheet, when the sheet contain data", function () {
+    it("Should return data in the file, when the sheets contain data", function () {
       var wb = XLSX.readFile(__dirname + "/menu1.xlsx");
       wb.SheetNames.forEach(name => {
         var sheet = wb.Sheets[name];
@@ -76,9 +77,9 @@ describe('XlsxDataAsJson', function () {
       });
     });
   });
-  
-  describe('parseFile', function () {
-    const jsonFactory = new XlsxDataAsJson();
+
+  describe('getData', function () {
+    const jsonFactory = new JsonFactory();
     it("Should return data in sheets until blank line, when file has data", function () {
       var rows = jsonFactory.getData(__dirname + "/menu1.xlsx");
       var expectedData = resultData1;
@@ -90,7 +91,7 @@ describe('XlsxDataAsJson', function () {
         assert.equal(row["URL de la imagen"], expectedData[index]["URL de la imagen"]);
       });
     });
-    
+
     it("Should return data in sheets until blank line, when file has data", function () {
       var rows = jsonFactory.getData(__dirname + "/menu2.xlsx");
       var expectedData = resultData2;
@@ -104,6 +105,38 @@ describe('XlsxDataAsJson', function () {
     });
   });
 
+});
+
+/**
+ * Test interface
+ */
+describe('It test the interface index.js', function () {
+  describe('parseFile', function () {
+    const jsonFactory = new JsonFactory();
+    it("Should return data in sheets until blank line, when file has data", function () {
+      var rows = XlsxDataAsJson.parseFile(__dirname + "/menu1.xlsx");
+      var expectedData = resultData1;
+      assert.equal(rows.length, expectedData.length);
+      rows.forEach((row, index) => {
+        assert.equal(row["Nombre"], expectedData[index]["Nombre"]);
+        assert.equal(row["Descripción"], expectedData[index]["Descripción"]);
+        assert.equal(row["Precio"], expectedData[index]["Precio"]);
+        assert.equal(row["URL de la imagen"], expectedData[index]["URL de la imagen"]);
+      });
+    });
+
+    it("Should return data in sheets until blank line, when file has data", function () {
+      var rows = XlsxDataAsJson.parseFile(__dirname + "/menu2.xlsx");
+      var expectedData = resultData2;
+      assert.equal(rows.length, expectedData.length);
+      rows.forEach((row, index) => {
+        assert.equal(row["Nombre"], expectedData[index]["Nombre"]);
+        assert.equal(row["Descripción"], expectedData[index]["Descripción"]);
+        assert.equal(row["Precio"], expectedData[index]["Precio"]);
+        assert.equal(row["URL de la imagen"], expectedData[index]["URL de la imagen"]);
+      });
+    });
+  });
 });
 
 const resultData2 = [{

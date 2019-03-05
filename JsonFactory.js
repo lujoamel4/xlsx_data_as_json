@@ -1,6 +1,6 @@
 const XLSX = require("xlsx");
 
-class XlsxDataAsJson {
+class JsonFactory {
     /**
      * use getData(sheet, headers) when need custom headers
      * @param sheet is Sheet
@@ -53,12 +53,12 @@ class XlsxDataAsJson {
         return result;
     }
 
-    getData(fileUrl) {
+    getData(fileUrl, headers) {
         var wb = XLSX.readFile(fileUrl);
         var result = [];
         wb.SheetNames.forEach(name => {
             var sheet = wb.Sheets[name];
-            this.getBody(sheet).forEach(row => {
+            this.getBody(sheet, headers).forEach(row => {
                 result.push(row);
             });
         });
@@ -68,4 +68,4 @@ class XlsxDataAsJson {
 }
 
 
-module.exports = XlsxDataAsJson;
+module.exports = JsonFactory;
