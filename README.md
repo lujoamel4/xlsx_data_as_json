@@ -16,7 +16,7 @@ xlsx_data_as_json has been tested with node 8.10.0 and 11.10.1. However, it shou
 ```
 
 # Input
-A file(.ods, xlsx, etc.) with this table
+A file named "menu1.xlsx" (may be have another extension like .ods, etc.) with this table.
 
 |   | A          | B                         | C     | D         | E |
 |--:|------------|---------------------------|-------|-----------|---|
