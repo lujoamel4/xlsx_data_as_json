@@ -45,11 +45,13 @@ rows variable should be
 }]
 ```
 
-## v1.0.1 
+
+
+### v1.0.1 
 - main functionality
 
-## v1.0.2
+### v1.0.2
 - improves code style
 
-#v1.0.3
+### v1.0.3
 - Make it works with AA, AB, ... columns
