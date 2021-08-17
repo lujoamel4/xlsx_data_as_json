@@ -53,5 +53,5 @@ rows variable should be
 ### v1.0.2
 - improves code style
 
-### v1.0.3
-- Make it works with AA, AB, ... columns
+### v1.1
+- Support for infinite columns
