@@ -44,3 +44,12 @@ rows variable should be
     "Image": ""
 }]
 ```
+
+## v1.0.1 
+- main functionality
+
+## v1.0.2
+- improves code style
+
+#v1.0.3
+- Make it works with AA, AB, ... columns
