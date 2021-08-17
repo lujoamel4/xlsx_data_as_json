@@ -1,11 +1,11 @@
 /* global it, describe */
-var assert = require('assert')
+const assert = require('assert')
 
-const JsonFactory = require('../JsonFactory')
+const JsonFactory = require('../src/JsonFactory')
 const XlsxDataAsJson = require('../index')
 console.log(XlsxDataAsJson)
 const XLSX = require('xlsx')
-var path = require('path')
+const path = require('path')
 
 describe('JsonFactory', function () {
   describe('getHeaders', function () {

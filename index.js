@@ -1,7 +1,7 @@
 /**
  * Module interface
  */
-const JsonFactory = require('./JsonFactory')
+const JsonFactory = require('./src/JsonFactory')
 
 module.exports = {
   parseFile: (fileUrl, headers) => {
