@@ -9,7 +9,7 @@
   "author": "Lucas Amilivia <amilivialucas4@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "xlsx": "^0.14.1"
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {
     "mocha": "^6.0.2",
