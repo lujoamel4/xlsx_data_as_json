@@ -1,13 +1,13 @@
 # xlsx_data_as_json
-Simple parse from xlsx to JSON.
+Simple parse from .xlsx, .csv, .ods, etc... to JSON.
 This package depend of xslx package and it based in the Common SpreadSheet format defined on xslx package. 
 
 ## Node Compatibility
-xlsx_data_as_json has been tested with node 8.10.0 and 11.10.1. However, it should work with previous versions.
+xlsx_data_as_json has been tested with node 8.x, 10.x, 11.x, 12.x, 14.x, 15.x, and 16.x. However, it should work with previous versions.
 
 # Usage
 # Instalation
-` npm instal xlsx_data_as_json `
+` npm install xlsx_data_as_json `
 
 ## Quick Start
 ``` [JavaScript]
@@ -16,7 +16,7 @@ xlsx_data_as_json has been tested with node 8.10.0 and 11.10.1. However, it shou
 ```
 
 # Input
-A file named "menu1.xlsx" (may be have another extension like .ods, etc.) with this table.
+A file named "menu1.xlsx" (may be have another extension like .csv, .ods, etc.) with this table.
 
 |   | A          | B                         | C     | D         | E |
 |--:|------------|---------------------------|-------|-----------|---|
